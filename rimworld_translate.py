@@ -3,9 +3,7 @@
 import os
 import json
 import codecs
-
-import requests
-from googletrans import Translator
+import google_translate
 
 try:
     import xml.etree.cElementTree as et
@@ -92,25 +90,6 @@ def find_mod_languages_list_json(mod_path):
     return mod_list_json
 
 
-def translate(source_str):
-    translator = Translator()
-    target_str = translator.translate(source_str, dest='zh-cn')
-    print(target_str.text)
-    return target_str.text + "(" + source_str + ")"
-
-    # sl = 'auto'
-    # tl = 'zh-CN'
-    # google_url = 'http://translate.google.cn/translate_a/single?client=gtx&dt=t&dj=1&ie=UTF-8&sl=' + sl + '&tl=' + tl + '&q=' + source_str
-    # target = requests.get(google_url)
-    # target_str = ''
-    # if target.status_code != 200:
-    #     return "测试"
-    # for sentence in target.json()['sentences']:
-    #     target_str = target_str + sentence['trans']
-    # print(target_str)
-    # return target_str
-
-
 def translate_mod_list(mod_list):
     for mod in mod_list:
         for language in mod['languages']:
@@ -118,7 +97,7 @@ def translate_mod_list(mod_list):
                 continue
             for key in language['keys']:
                 if key['en'] is not None:
-                    key['zh_CN'] = translate(key['en'])
+                    key['zh_CN'] = google_translate.translate(key['en'])
                 else:
                     key['zh_CN'] = " "
     return mod_list
