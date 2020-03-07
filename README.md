@@ -1,12 +1,14 @@
 # RimWorld mod 自动机翻脚本
 
+**！！！使用前一定要注意备份mod文件夹，避免数据损坏。！！！**
+
 ## 简介
 这是一个很简单的RimWorld mod机翻脚本，使用的Google翻译。翻译后会保留原文，展示形式为<u>**中文(English)**</u>
 
 ## 使用方式
 ### Windows
 1. 下载脚本
-    1. 直接点击上方<u>**clone or download**</u>后点击<u>**download zip**</u>
+    1. 直接点击网页上方绿色按钮<u>**clone or download**</u>后点击<u>**download zip**</u>
     2. 解压缩
 2. 下载安装 Python3
     1. 打开网页 https://www.python.org/downloads/ 
