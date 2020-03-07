@@ -77,5 +77,5 @@ def translate(source_str):
         "Host": "translate.google.cn"
     })
     s = target_str.json()[0] + "(" + source_str + ")"
-    print(s)
+    print(s.replace("\\ ", "\\"))
     return s
