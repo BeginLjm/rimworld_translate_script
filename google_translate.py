@@ -78,4 +78,4 @@ def translate(source_str):
     })
     s = target_str.json()[0] + "(" + source_str + ")"
     print(s.replace("\\ ", "\\"))
-    return s
+    return s.replace("\\ ", "\\")
