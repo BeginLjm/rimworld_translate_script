@@ -27,7 +27,7 @@
 ### 汉化效果
 ![效果展示](https://github.com/BeginLjm/rimworld_translate_script/raw/master/image/image-1.png "效果展示")
 ### 补充汉化效果
-![补充汉化效果](https://github.com/BeginLjm/rimworld_translate_script/raw/master/image/image-2.png "补充汉化效果")
+![补充汉化效果](https://github.com/BeginLjm/rimworld_translate_script/raw/master/image/image-2.jpg "补充汉化效果")
 
 ## 常见问题
 1. pip3 install后一直没反应，之后出现Timout。答：科学上网
