@@ -21,9 +21,13 @@
     3. 在CMD窗口中输入`python `注意有空格
     4. 将解压出的文件中的rimworld_translate.py拖入CMD窗口 回车执行
     5. 输入mod文件的上层目录，就是包含所有mod文件夹的目录
+4. Mod顺序调整。**注意需要将自己原本订阅的汉化mod放在原mod之前。就能做到补充翻译的能力，否则机翻会覆盖汉化mod。**
 
 ## 效果展示
+### 汉化效果
 ![效果展示](https://github.com/BeginLjm/rimworld_translate_script/raw/master/image/image-1.png "效果展示")
+### 补充汉化效果
+![补充汉化效果](https://github.com/BeginLjm/rimworld_translate_script/raw/master/image/image-2.png "补充汉化效果")
 
 ## 常见问题
 1. pip3 install后一直没反应，之后出现Timout。答：科学上网
