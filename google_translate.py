@@ -76,4 +76,6 @@ def translate(source_str):
         "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
         "Host": "translate.google.cn"
     })
-    print(target_str.json()[0])
+    s = target_str.json()[0] + "(" + source_str + ")"
+    print(s)
+    return s

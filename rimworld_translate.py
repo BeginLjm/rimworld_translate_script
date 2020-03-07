@@ -90,19 +90,6 @@ def find_mod_languages_list_json(mod_path):
     return mod_list_json
 
 
-def translate_mod_list(mod_list):
-    for mod in mod_list:
-        for language in mod['languages']:
-            if language['type'] == 1:
-                continue
-            for key in language['keys']:
-                if key['en'] is not None:
-                    key['zh_CN'] = google_translate.translate(key['en'])
-                else:
-                    key['zh_CN'] = " "
-    return mod_list
-
-
 def output_zh_file(mod_list):
     for mod in mod_list:
         for language in mod['languages']:
@@ -135,18 +122,44 @@ def create_xml_file(language):
     fp.close()
     print(dir)
     print(path)
+    print(language)
+
+
+def translate_mod_list(mod_list):
+    for mod in mod_list:
+        print(mod['name'] + " 开始翻译.是否开始翻译(Y/N/S) (输入Y开始翻译，输入N结束，输入S跳过当前mod)")
+        y = input()
+        if y == 'Y' or y == 'y':
+            for language in mod['languages']:
+                if language['type'] == 1:
+                    continue
+                for key in language['keys']:
+                    if key['en'] is not None:
+                        key['zh_CN'] = google_translate.translate(key['en'])
+                    else:
+                        key['zh_CN'] = " "
+                create_xml_file(language)
+            print(mod['name'] + " 已翻译完成")
+        elif y == 's' or y == 'S':
+            continue
+        else:
+            break
+    return mod_list
 
 
 if __name__ == '__main__':
     print("请输入Mod列表路径：")
-    path = input()
+    # path = input()
     # path = "/Users/lujunming/Library/Application Support/Steam/steamapps/workshop/content/294100"
-    # path = "/Users/lujunming/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Mods"
+    path = "/Users/lujunming/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Mods"
     mod_json = find_mod_languages_list_json(path)
-    print(mod_json)
-    if len(mod_json) > 0:
-        mod_json = translate_mod_list(mod_json)
-        output_zh_file(mod_json)
-    output = codecs.open(path + os.sep + "auto_translate.json", 'w', encoding='utf-8')
-    output.write(json.dumps(mod_json))
-    output.close()
+    print("找到" + str(len(mod_json)) + "个Mod不包含中文资源,是否开始翻译.(Y/N) (输入Y开始翻译，输入N结束)")
+    y = input()
+    if y == 'Y' or y == 'y':
+        if len(mod_json) > 0:
+            mod_json = translate_mod_list(mod_json)
+            # output_zh_file(mod_json)
+        output = codecs.open(path + os.sep + "auto_translate.json", 'w', encoding='utf-8')
+        output.write(json.dumps(mod_json))
+        output.close()
+    print("翻译结束")
