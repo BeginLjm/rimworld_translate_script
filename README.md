@@ -6,7 +6,7 @@
 ## 使用方式
 ### Windows
 1. 下载脚本
-    1. 直接点击上方<u>**clone or download**</u>后点击<u>**download zip**</u>
+    1. 直接点击网页上方绿色按钮<u>**clone or download**</u>后点击<u>**download zip**</u>
     2. 解压缩
 2. 下载安装 Python3
     1. 打开网页 https://www.python.org/downloads/ 
