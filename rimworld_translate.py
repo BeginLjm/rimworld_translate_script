@@ -149,9 +149,9 @@ def translate_mod_list(mod_list):
 
 if __name__ == '__main__':
     print("请输入Mod列表路径：")
-    # path = input()
+    path = input()
     # path = "/Users/lujunming/Library/Application Support/Steam/steamapps/workshop/content/294100"
-    path = "/Users/lujunming/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Mods"
+    # path = "/Users/lujunming/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Mods"
     mod_json = find_mod_languages_list_json(path)
     print("找到" + str(len(mod_json)) + "个Mod不包含中文资源,是否开始翻译.(Y/N) (输入Y开始翻译，输入N结束)")
     y = input()
