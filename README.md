@@ -22,7 +22,7 @@
     5. 输入mod文件的上层目录，就是包含所有mod文件夹的目录
 
 ## 效果展示
-![效果展示](https://github.com/BeginLjm/rimworld_translate_script/blob/master/image/image-1.png "效果展示")
+![效果展示](https://github.com/BeginLjm/rimworld_translate_script/raw/master/image/image-1.png "效果展示")
 
 ## 常见问题
 1. pip3 install后一直没反应，之后出现Timout。答：科学上网
