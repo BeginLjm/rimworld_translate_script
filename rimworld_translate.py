@@ -64,11 +64,11 @@ def find_need_translate_list(root_path):
     mod_number_list = os.listdir(path)
     _list = []
     for mod_number in mod_number_list:
-        zh_cn = os.path.exists(path + "/" + mod_number + "/Languages/ChineseSimplified")
-        zh_tw = os.path.exists(path + "/" + mod_number + "/Languages/ChineseTraditional")
-        en = os.path.exists(path + "/" + mod_number + "/Languages/English")
+        zh_cn = os.path.exists(path + os.sep + mod_number + os.sep + "Languages" + os.sep + "ChineseSimplified")
+        zh_tw = os.path.exists(path + os.sep + mod_number + os.sep + "Languages" + os.sep + "ChineseTraditional")
+        en = os.path.exists(path + os.sep + mod_number + os.sep + "Languages" + os.sep + "English")
         if zh_cn == False and zh_tw == False and en == True:
-            _list.append(root_path + "/" + mod_number)
+            _list.append(root_path + os.sep + mod_number)
     return _list
 
 
@@ -82,9 +82,9 @@ def find_mod_languages_list_json(mod_path):
     mod_list_json = []
     for mod in mod_list:
         mod_map = {}
-        mod_map["name"] = find_mod_name(mod + "/About/About.xml")
+        mod_map["name"] = find_mod_name(mod + os.sep + "About" + os.sep + "About.xml")
         mod_languages = []
-        for language in list_all_xml_files(mod + "/Languages/English"):
+        for language in list_all_xml_files(mod + os.sep + "Languages" + os.sep + "English"):
             mod_languages.append(read_xml_file(language))
         mod_map["languages"] = mod_languages
         mod_list_json.append(mod_map)
@@ -148,7 +148,7 @@ def create_xml_file(language):
         root.appendChild(k)
     # 开始写xml文档
     path = language['path'].replace('English', 'ChineseSimplified')
-    dir = path.replace(path.split("/")[len(path.split("/")) - 1], "")
+    dir = path.replace(path.split(os.sep)[len(path.split(os.sep)) - 1], "")
     if not os.path.exists(dir):
         os.makedirs(dir)
     fp = codecs.open(path, 'w', encoding='utf-8')
@@ -168,6 +168,6 @@ if __name__ == '__main__':
     if len(mod_json) > 0:
         mod_json = translate_mod_list(mod_json)
         output_zh_file(mod_json)
-    output = codecs.open(path + "/auto_translate.json", 'w', encoding='utf-8')
+    output = codecs.open(path + os.sep + "auto_translate.json", 'w', encoding='utf-8')
     output.write(json.dumps(mod_json))
     output.close()
