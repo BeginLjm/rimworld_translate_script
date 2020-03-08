@@ -62,20 +62,24 @@ def token(a):
     return str(a).split(".")[0] + jd + str(int(a) ^ b)
 
 
-def translate(source_str):
+def google_translate(source_str):
     tk = token(source_str)
-    target_str = requests.get("https://translate.google.cn/translate_a/t", params={
-        "client": "webapp",
-        "sl": "auto",
-        "tl": "zh-CN",
-        "tk": tk,
-        "q": source_str
-    }, headers={
-        "authority": "translate.google.cn",
-        'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36',
-        "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
-        "Host": "translate.google.cn"
-    })
-    s = target_str.json()[0] + "(" + source_str + ")"
-    print(s.replace("\\ ", "\\").replace("/ ", "/"))
-    return s.replace("\\ ", "\\").replace("/ ", "/")
+    try:
+        target = requests.get("https://translate.google.cn/translate_a/t", params={
+            "client": "webapp",
+            "sl": "auto",
+            "tl": "zh-CN",
+            "tk": tk,
+            "q": source_str
+        }, headers={
+            "authority": "translate.google.cn",
+            'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36',
+            "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+            "Host": "translate.google.cn"
+        })
+    except Exception as e:
+        return None
+    if target.status_code != 200:
+        return None
+    target_str = target.json()[0]
+    return target_str

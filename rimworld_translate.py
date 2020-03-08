@@ -3,7 +3,7 @@
 import os
 import json
 import codecs
-import google_translate
+from translate import translate
 
 try:
     import xml.etree.cElementTree as et
@@ -122,7 +122,6 @@ def create_xml_file(language):
     fp.close()
     print(dir)
     print(path)
-    print(language)
 
 
 def translate_mod_list(mod_list):
@@ -135,7 +134,12 @@ def translate_mod_list(mod_list):
                     continue
                 for key in language['keys']:
                     if key['en'] is not None:
-                        key['zh_CN'] = google_translate.translate(key['en'])
+                        zh = translate.translate(key['en'])
+                        if zh is None:
+                            print(mod['name'] + " 翻译失败，终止翻译。")
+                            return mod_list
+                        else:
+                            key['zh_CN'] = zh
                     else:
                         key['zh_CN'] = " "
                 create_xml_file(language)
@@ -149,8 +153,8 @@ def translate_mod_list(mod_list):
 
 if __name__ == '__main__':
     print("请输入Mod列表路径：")
-    path = input()
-    # path = "/Users/lujunming/Library/Application Support/Steam/steamapps/workshop/content/294100"
+    # path = input()
+    path = "/Users/lujunming/Library/Application Support/Steam/steamapps/workshop/content/294100"
     # path = "/Users/lujunming/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Mods"
     mod_json = find_mod_languages_list_json(path)
     print("找到" + str(len(mod_json)) + "个Mod不包含中文资源,是否开始翻译.(Y/N) (输入Y开始翻译，输入N结束)")
