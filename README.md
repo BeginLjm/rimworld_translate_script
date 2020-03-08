@@ -18,10 +18,11 @@
     5. 点击Install Now
 3. 安装依赖
     1. 右键电脑右下角Windows图标点击运行，输入CMD，确定
-    2. 在CMD窗口中输入`pip3 install requests`
-    3. 在CMD窗口中输入`python `注意有空格
-    4. 将解压出的文件中的rimworld_translate.py拖入CMD窗口 回车执行
-    5. 输入mod文件的上层目录，就是包含所有mod文件夹的目录
+    2. 在CMD窗口中输入`pip3 install requests` 回车执行。
+4. 开始翻译
+    1. 在CMD窗口中输入`python `注意有空格
+    2. 将解压出的文件中的rimworld_translate.py拖入CMD窗口 回车执行
+    3. 输入mod文件的上层目录，就是包含所有mod文件夹的目录
 4. Mod顺序调整。**注意需要将自己原本订阅的汉化mod放在原mod之前。就能做到补充翻译的能力，否则机翻会覆盖汉化mod。**
 
 ## 效果展示
