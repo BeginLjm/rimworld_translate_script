@@ -25,7 +25,7 @@ def rl(r, o):
 def token(a, gtk):
     o = len(a)
     if o > 30:
-        a = "" + a.substr(0, 10) + a.substr(math.floor(o / 2) - 5, 10) + a.substring(len(a), len(a) - 10)
+        a = "" + a[0: 0 + 10] + a[math.floor(o / 2) - 5:math.floor(o / 2) + 5] + a[len(a) - 10:len(a)]
     t = ""
     C = None
     if C != None:
