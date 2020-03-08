@@ -18,7 +18,7 @@
     5. 点击Install Now
 3. 安装依赖
     1. 右键电脑右下角Windows图标点击运行，输入CMD，确定
-    2. 在CMD窗口中输入`pip3 install requests` 回车执行。
+    2. 在CMD窗口中输入`pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple requests` 回车执行。
 4. 开始翻译
     1. 在CMD窗口中输入`python `注意有空格
     2. 将解压出的文件中的rimworld_translate.py拖入CMD窗口 回车执行
