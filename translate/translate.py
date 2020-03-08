@@ -11,7 +11,7 @@ def translate(source_str):
     if target_str is None:
         target_str = bing_translate.bing_translate(source_str)
     if target_str is None:
-        target_str = iciba_translate
+        target_str = iciba_translate.iciba_translate(source_str)
     if target_str is None:
         target_str = baidu_translate.baidu_translate(source_str)
     if target_str is None:
