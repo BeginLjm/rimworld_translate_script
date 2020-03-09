@@ -95,7 +95,7 @@ class Dict:
     def get_token_gtk(self):
         url = 'https://fanyi.baidu.com'
         try:
-            r = self.sess.get(url, headers=self.headers)
+            r = self.sess.get(url, headers=self.headers, timeout=5)
             self.token = re.findall(r"token: '(.*?)',", r.text)[0]
             self.gtk = re.findall(r"window.gtk = '(.*?)';", r.text)[0]
         except Exception as e:
@@ -105,7 +105,7 @@ class Dict:
         url = 'https://fanyi.baidu.com/langdetect'
         data = {'query': query}
         try:
-            r = self.sess.post(url=url, data=data)
+            r = self.sess.post(url=url, data=data, timeout=5)
         except Exception as e:
             raise e
 
@@ -132,7 +132,7 @@ class Dict:
             'token': self.token,
         }
         try:
-            r = self.sess.post(url=url, data=data)
+            r = self.sess.post(url=url, data=data, timeout=5)
         except Exception as e:
             return None
 
@@ -142,4 +142,8 @@ class Dict:
 
 
 def baidu_translate(source_str):
-    return Dict().translate(source_str)
+    try:
+        return Dict().translate(source_str)
+    except Exception as e:
+        print(e)
+        return None

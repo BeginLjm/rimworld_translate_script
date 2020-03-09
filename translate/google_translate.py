@@ -63,8 +63,8 @@ def token(a):
 
 
 def google_translate(source_str):
-    tk = token(source_str)
     try:
+        tk = token(source_str)
         target = requests.get("https://translate.google.cn/translate_a/t", params={
             "client": "webapp",
             "sl": "auto",
@@ -76,10 +76,11 @@ def google_translate(source_str):
             'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36',
             "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
             "Host": "translate.google.cn"
-        })
+        }, timeout=5)
+        if target.status_code != 200:
+            return None
+        target_str = target.json()[0]
+        return target_str
     except Exception as e:
+        print(e)
         return None
-    if target.status_code != 200:
-        return None
-    target_str = target.json()[0]
-    return target_str
